@@ -27,10 +27,6 @@ jobs: # работы, которые будут выполнены
   #    - name: Test with pytest
   #      run: pytest
 
-  deploy:
-    needs: tests # данная опция необходима, для того, чтобы деплой и тесты не выполнялись одновременно.
-
-    runs-on: ubuntu-latest
 
 
 
