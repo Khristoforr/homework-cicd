@@ -2,4 +2,4 @@ django
 djangorestframework
 psycopg2-binary
 gunicorn
-django_heroku
+django-on-heroku
