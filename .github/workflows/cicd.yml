@@ -18,7 +18,7 @@ jobs: # работы, которые будут выполнены
 
       - name: Install dependencies # установка зависимостей
         run: | # run в отличие от uses позволяет испоьлзовать bash команды
-          python -m pip install --uprade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
   #    - name: Lint with flake8 # это линтер, который позволяет проверять код на соответствие pep8
