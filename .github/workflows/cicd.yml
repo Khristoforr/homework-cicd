@@ -1,0 +1,37 @@
+name: cicd
+
+on: [ push ] # команда "спусковой крючок" говорит о том, что при любом пуше будет выполнны джобы, можно настроить отдельные ветки для пуша
+
+jobs: # работы, которые будут выполнены
+  tests: # тесты, как ни странно)
+    runs-on: ubuntu-latest # указываем на какой системе запускать программу "некая виртуалочка" вычисительный ресурс
+
+# на заметку - если какой-то шаг завершается с ошибкой, то дальше выполнение не идёт!
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 # использование предподготовленных экшн (заренее подготовлены гитхабом)
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9 # параметры для экшена
+
+      - name: Install dependencies # установка зависимостей
+        run: | # run в отличие от uses позволяет испоьлзовать bash команды
+          python -m pip install --uprade pip
+          pip install -r requirements.txt
+
+  #    - name: Lint with flake8 # это линтер, который позволяет проверять код на соответствие pep8
+  #      run: flake8 .
+  #
+  #    - name: Test with pytest
+  #      run: pytest
+
+  deploy:
+    needs: tests # данная опция необходима, для того, чтобы деплой и тесты не выполнялись одновременно.
+
+    runs-on: ubuntu-latest
+
+
+
+
